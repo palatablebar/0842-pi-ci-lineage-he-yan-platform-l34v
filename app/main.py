@@ -6,6 +6,8 @@ from werkzeug.exceptions import RequestEntityTooLarge
 from app.catalog import SPEC
 from app.config import MAX_FILE, ROOT
 from app.errors import DomainIssue, error_response
+from app.ledger.routes import ledger_api
+from app.ledger.store import LedgerStore
 from app.review.store import Store
 from app.routes import api
 
@@ -13,10 +15,14 @@ from app.routes import api
 def create_app(database=None):
     app = Flask(__name__)
     app.config["MAX_CONTENT_LENGTH"] = MAX_FILE + 64 * 1024
-    app.extensions["runs"] = Store(database or os.getenv("WORKBENCH_DB", str(ROOT / "instance" / "workbench.sqlite3")))
+    db_path = database or os.getenv("WORKBENCH_DB", str(ROOT / "instance" / "workbench.sqlite3"))
+    app.extensions["runs"] = Store(db_path)
+    # 父批余量台账与签发单据独立成表，与复核 runs 共用同一 SQLite 文件
+    app.extensions["ledger"] = LedgerStore(db_path)
     app.register_error_handler(DomainIssue, error_response)
     app.register_error_handler(RequestEntityTooLarge, lambda _: error_response(DomainIssue("FILE_TOO_LARGE", 413)))
     app.register_blueprint(api)
+    app.register_blueprint(ledger_api)
 
     @app.get("/")
     def home():

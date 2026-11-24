@@ -8,6 +8,14 @@
 .p0842 .metric{border:0;border-left:1px dashed var(--accent);border-radius:0;background:transparent}
 .p0842 .board{grid-template-columns:1.4fr .6fr}
 .p0842 #panel-table{grid-column:1/-1}.p0842 #panel-review{grid-column:1/-1}
+.p0842 #panel-ledger-issue{grid-column:1/-1}
+.p0842 .ledger-actions,.p0842 .new-doc{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end;margin:6px 0 10px}
+.p0842 .new-doc label{display:grid;gap:3px;font-size:12px;color:var(--muted)}
+.p0842 .new-doc input{min-width:150px}
+.p0842 .inline-fix{display:flex;gap:6px}
+.p0842 .inline-fix input{width:96px}
+.p0842 tr.row-shortage{background:color-mix(in srgb,var(--danger) 12%,transparent)}
+.p0842 .doc-evidence{white-space:nowrap}
 .p0842 .panel{border:0;border-top:1px dashed var(--ink);border-radius:0;background:transparent;padding:12px 0}
 .p0842 .panel-head::before{content:"$ ";color:var(--accent)}
 .p0842 th{border-bottom:1px dashed var(--line)}

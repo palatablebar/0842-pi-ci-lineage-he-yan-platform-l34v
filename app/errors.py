@@ -18,6 +18,11 @@ MESSAGES = {
     "GATE_BLOCKED": "存在阻断项，不能签发",
     "NOT_APPROVED": "批次尚未签发",
     "BAD_REQUEST": "请求内容不完整",
+    "LOT_NOT_FOUND": "父批次不存在",
+    "DOC_NOT_FOUND": "单据不存在",
+    "NOT_SIGNED": "单据尚未签发，暂无凭证",
+    "DOC_HELD": "单据已暂缓，需转回草稿后才能签发",
+    "INSUFFICIENT_AVAILABLE": "父批可用量不足，签发已整体回滚",
 }
 
 

@@ -15,6 +15,8 @@
 | M5 运行对账 | 核对来源行、采信、隔离、重复与计算条目 | `POST /api/stages/reconcile` | `app/reconcile/ledger.py` | `tests/test_reconcile.py` |
 | M6 批次复核 | 带版本号签发或暂缓，拒绝陈旧复核 | `POST /api/runs/{id}/review` | `app/review/service.py` | `tests/test_review.py` |
 | M7 证据交付 | 仅在签发后输出可校验的复核证据 | `GET /api/runs/{id}/evidence` | `app/evidence/render.py` | `tests/test_evidence.py` |
+| M8 余量台账 | 父批登记、实称量更正与缺口视图 | `POST /api/ledger/lots`、`POST /api/ledger/lots/{id}/corrections` | `app/ledger/store.py` | `tests/test_ledger.py` |
+| M9 单据签发 | 拆批/合批原子占量、并发不超用、重试幂等、冻结凭证 | `POST /api/ledger/docs/{id}/sign`、`GET /api/ledger/docs/{id}/evidence` | `app/ledger/service.py` | `tests/test_ledger.py`、`tests/test_ledger_concurrency.py`、`tests/test_ledger_http.py` |
 
 ## 输入陷阱
 

@@ -39,6 +39,36 @@
         </div>
       </div>
     </article>
+    <article class="panel" id="panel-ledger-issue">
+      <div class="panel-head"><h2>父批余量与签发</h2><span class="hint" id="ledger-shortage"></span></div>
+      <div class="ledger-actions">
+        <button id="ledger-seed" type="button">从当前样例登记父批</button>
+        <button id="ledger-refresh" type="button">刷新台账</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>父批次</th><th class="num">实称量</th><th class="num">已签用量</th>
+          <th class="num">可用量</th><th class="num">缺口</th><th>版本</th><th>更正实称量</th></tr></thead>
+          <tbody id="ledger-lots"></tbody>
+        </table>
+      </div>
+      <div class="panel-head"><h2>签发单据</h2><span class="hint">草稿不占量，签发成功才占量</span></div>
+      <div class="new-doc">
+        <label>单号 <input id="doc-id" placeholder="DOC-1"></label>
+        <label>类型
+          <select id="doc-kind"><option value="SPLIT">拆批 SPLIT</option><option value="MERGE">合批 MERGE</option></select>
+        </label>
+        <label>占用明细 <input id="doc-lines" placeholder="L1:200;L5:40"></label>
+        <button id="doc-create" type="button">登记单据</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>单号</th><th>类型</th><th>状态</th><th>占用明细</th>
+          <th class="num">合计</th><th>可签</th><th>操作</th></tr></thead>
+          <tbody id="ledger-docs"></tbody>
+        </table>
+      </div>
+    </article>
   </section>
 </main>
 {% endblock %}
